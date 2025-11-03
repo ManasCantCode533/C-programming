@@ -3,7 +3,7 @@
 #include <string.h>
 
 #define HASH 31
-#define MAX_CITIES 10
+#define MAX_CITIES 20
 
 /* -------- Flights (Linked List) -------- */
 typedef struct Flight {
@@ -83,7 +83,7 @@ void printBoardingPass(Passenger* p) {
 /* -------- Graph for Airport Routes -------- */
 char cities[MAX_CITIES][20] = {
     "DELHI", "MUMBAI", "BENGALORE", "CHENNAI", "HYDERABAD",
-    "VISAKHAPATNAM", "GOA", "KOLKATA", "PATNA", "GORAKHPUR"
+    "VISAKHAPATNAM", "GOA", "KOLKATA", "AHEMDABAD", "GUWAHATI", "GORAKHPUR"
 };
 
 int adj[MAX_CITIES][MAX_CITIES] = {0};
@@ -104,20 +104,20 @@ void addRoute(char *src, char *dest) {
 
 /* -------- Display the Airport Map -------- */
 void showAirportMap() {
-    printf("\n========== INDIA AIRPORT ROUTE MAP ==========\n\n");
-    printf("               [DELHI]\n");
-    printf("                 |  \\\n");
-    printf("                 |   \\_________[KOLKATA]\n");
-    printf("                 |               |\n");
-    printf("             [GORAKHPUR]      [PATNA]\n");
-    printf("                                |\n");
-    printf("                                |\n");
-    printf("          [MUMBAI] ------ [HYDERABAD] ------ [VISAKHAPATNAM]\n");
-    printf("             |                |\n");
-    printf("            [GOA]         [BENGALORE]\n");
-    printf("                               |\n");
-    printf("                           [CHENNAI]\n");
-    printf("\n---------------------------------------------\n");
+    printf("\n=============================== INDIA AIRPORT ROUTE MAP ==============================\n\n");
+    printf("                                       [DELHI]\n");
+    printf("                                         |  \\\n");
+    printf("                                         |   \\_________[KOLKATA]\n");
+    printf("                                         |               |\n");
+    printf("                          [GUWAHATI]---[GORAKHPUR]      [AHEMDABAD]\n");
+    printf("                                                        |\n");
+    printf("                                                        |\n");
+    printf("                                  [MUMBAI] ------ [HYDERABAD] ------ [VISAKHAPATNAM]\n");
+    printf("                                     |                |\n");
+    printf("                                    [GOA]         [BENGALORE]\n");
+    printf("                                                       |\n");
+    printf("                                                   [CHENNAI]\n");
+    printf("\n--------------------------------------------------------------------------------------\n");
     printf("Graph Connections (Adjacency List):\n\n");
 
     for (int i = 0; i < MAX_CITIES; i++) {
@@ -129,13 +129,15 @@ void showAirportMap() {
         printf("\n");
     }
 
-    printf("---------------------------------------------\n");
+    printf("----------------------------------------------------------------------\n");
 }
 
 
 /* -------- MAIN -------- */
 int main() {
-    printf("Airport Management System (Linked List + Hashing + Graph)\n");
+    printf("============================\n");
+    printf(" Airport Management System\n");
+    printf("============================\n");
 
     /* Predefined flights */
     addFlight(newFlight(101, "DELHI", "MUMBAI", 120, 5500));
@@ -144,7 +146,8 @@ int main() {
     addFlight(newFlight(404, "BENGALORE", "CHENNAI", 90, 5000));
     addFlight(newFlight(505, "GORAKHPUR", "DELHI", 180, 8000));
     addFlight(newFlight(606, "HYDERABAD", "VISAKHAPATNAM", 180, 4000));
-    addFlight(newFlight(707, "PATNA", "GORAKHPUR", 120, 3500));
+    addFlight(newFlight(707, "AHEMDABAD", "GORAKHPUR", 120, 3500));
+    addFlight(newFlight(707, "GORAKHPUR", "GUWAHATI" , 150, 3500));
     addFlight(newFlight(808, "GOA", "MUMBAI", 180, 4000));
     addFlight(newFlight(909, "KOLKATA", "DELHI", 180, 12000));
 
